@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "elearning-frontend:build:production"
+              "buildTarget": "elearning-frontend:build:production"
             },
             "development": {
-              "browserTarget": "elearning-frontend:build:development"
+              "buildTarget": "elearning-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "elearning-frontend:build"
+            "buildTarget": "elearning-frontend:build"
           }
         },
         "test": {
