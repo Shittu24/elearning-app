@@ -1,0 +1,11 @@
+<h2>Course Details</h2>
+<div *ngIf="course" class="course-detail-container">
+    <img *ngIf="course.imagePath" [src]="getFullImageUrl(course.imagePath)" alt="Course Image"
+        class="course-detail-image">
+
+    <div class="course-info">
+        <p><strong>Title:</strong> {{ course.title }}</p>
+        <p><strong>Description:</strong> {{ course.description }}</p>
+        <button mat-raised-button (click)="startLesson(course.id)">Start Lesson</button>
+    </div>
+</div>

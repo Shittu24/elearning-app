@@ -1,0 +1,84 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Reduced size of the dropdown button */
+.dropbtn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    font-size: 12px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: rgba(160, 19, 19, 0.731);
+}
+
+/* Set toolbar to fixed position */
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Ensure the main content is visible below the fixed toolbar */
+main {
+    padding-top: 64px;
+    /* Adjust this value based on the height of your toolbar */
+}
+
+/* Form field styling for color contrast */
+mat-form-field {
+    color: white;
+    /* Set form field text color */
+}
+
+mat-form-field.mat-focused .mat-form-field-label {
+    color: white !important;
+    /* Ensure form labels are visible when focused */
+}
+
+/* General style overrides for radio groups */
+mat-radio-group {
+    color: white;
+    /* Ensure radio group text is visible */
+}

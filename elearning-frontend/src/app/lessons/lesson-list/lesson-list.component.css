@@ -1,0 +1,170 @@
+/* General Container for Lessons */
+.lesson-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three lessons per row */
+    gap: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+/* Individual Lesson Card */
+.lesson-card {
+    background-color: #fff;
+    /* Light background for a cleaner look */
+    color: #333;
+    /* Dark text color */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Lesson Content Styling */
+.lesson-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Lesson ID Badge */
+.lesson-id {
+    background-color: #3f51b5;
+    /* Primary color for badge */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Lesson Title Styling */
+.lesson-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+/* Completed Lesson Styling */
+.completed-lesson {
+    text-decoration: line-through;
+    color: #81c784;
+    /* Green for completed lessons */
+    font-style: italic;
+}
+
+/* Actions Button Group */
+.lesson-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Button Styling */
+button {
+    margin: 5px 0;
+    color: white;
+    background-color: #3f51b5;
+    /* Primary button color */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+    /* Red on hover */
+}
+
+button:focus {
+    outline: 2px solid #2196f3;
+    outline-offset: 2px;
+}
+
+/* Heading Styling */
+h2 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* No Lessons Message */
+.no-lessons-message {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+
+/* For Large Screens (Desktops and Laptops) */
+@media (min-width: 1200px) {
+    .lesson-container {
+        grid-template-columns: repeat(3, 1fr);
+        /* Three lessons per row */
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .lesson-title {
+        font-size: 20px;
+    }
+}
+
+/* For Tablets */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .lesson-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two lessons per row */
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .lesson-title {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* For Mobile (Small Screens) */
+@media (max-width: 767px) {
+    .lesson-container {
+        grid-template-columns: 1fr;
+        /* One lesson per row */
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .lesson-title {
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        /* Full-width buttons for easier tapping */
+        font-size: 14px;
+        padding: 10px;
+    }
+}

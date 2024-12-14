@@ -1,0 +1,38 @@
+<div class="login-container">
+    <h2>Login or Sign up to start learning</h2>
+
+    <div class="oauth-login">
+        <button class="google-login-btn" (click)="loginWithGoogle()">
+            <mat-icon>google</mat-icon> Login with Google
+        </button>
+    </div>
+
+    <hr />
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>username</mat-label>
+            <input matInput formControlName="username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required />
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="'Hide password'">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" class="login-btn">
+            Login
+        </button>
+
+        <div class="footer-links">
+            <a routerLink="/signup">Create Account</a>
+        </div>
+    </form>
+</div>

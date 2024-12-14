@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ibrah
+      POSTGRES_PASSWORD: arsenalFC
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Persistent volume
+    networks:
+      - elearning-network
+
+  backend:
+    build:
+      context: ./elearning
+    ports:
+      - "9000:9000"
+    environment:
+      DATABASE_URL: jdbc:postgresql://host.docker.internal:5432/testdb
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS}
+      ADMIN_REGISTRATION_TOKEN: ${ADMIN_REGISTRATION_TOKEN}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+    depends_on:
+      - postgres
+    networks:
+      - elearning-network
+
+  frontend:
+    build:
+      context: ./elearning-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - elearning-network
+
+volumes:
+  postgres-data:  # Define the volume to store PostgreSQL data
+    driver: local
+
+networks:
+  elearning-network:

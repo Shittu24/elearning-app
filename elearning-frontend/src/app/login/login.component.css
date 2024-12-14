@@ -1,0 +1,148 @@
+/* Login Container Styling */
+.login-container {
+    max-width: 400px;
+    margin: 5% auto;
+    padding: 30px;
+    background-color: #000;
+    /* Dark background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow */
+    text-align: center;
+}
+
+/* Header Styling */
+h2 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Google Login Button */
+.google-login-btn {
+    background-color: #db4437;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    /* Full width */
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.google-login-btn mat-icon {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.google-login-btn:hover {
+    background-color: #c23321;
+    /* Darker red on hover */
+}
+
+/* Horizontal Divider */
+hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 20px 0;
+}
+
+/* Form Fields */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mat-input-element {
+    color: #fff;
+    background-color: #222;
+    /* Dark input background */
+    border-radius: 8px;
+}
+
+.mat-form-field-label {
+    color: #bbb;
+    /* Light gray for labels */
+}
+
+mat-form-field input {
+    color: #fff;
+    /* White text */
+}
+
+/* Password Visibility Icon Styling */
+.mat-icon {
+    color: #fff;
+}
+
+.mat-icon:hover {
+    color: #ccc;
+    /* Lighter color on hover */
+}
+
+button.mat-icon-button {
+    margin-left: -40px;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Login Button */
+.login-btn {
+    background-color: #d32f2f;
+    /* Red button */
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #b71c1c;
+    /* Darker red */
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        max-width: 90%;
+        /* Full width on mobile */
+        padding: 20px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .login-container {
+        max-width: 60%;
+        /* Slightly wider for tablets */
+    }
+}

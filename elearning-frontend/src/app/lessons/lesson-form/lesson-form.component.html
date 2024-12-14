@@ -1,0 +1,47 @@
+<h2>{{ isEditMode ? 'Edit Lesson' : 'Create Lesson' }}</h2>
+
+<!-- Reactive Form for Lesson Creation/Edit -->
+<form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+
+  <!-- Course Selection Dropdown -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Course</mat-label>
+    <mat-select formControlName="courseId" required>
+      <mat-option *ngFor="let course of courses" [value]="course.id">
+        {{ course.title }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="lessonForm.get('courseId')?.hasError('required')">
+      Course is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Lesson Title Input -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" required>
+    <mat-error *ngIf="lessonForm.get('title')?.hasError('required')">
+      Title is required
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Quill Rich Text Editor for Lesson Content -->
+  <quill-editor #quillEditor formControlName="textContent" class="quill-editor"></quill-editor>
+
+  <!-- Button Actions (Submit and Cancel) -->
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="lessonForm.invalid">
+      {{ isEditMode ? 'Update' : 'Create' }}
+    </button>
+    <button mat-button type="button" (click)="navigateToLessons()">
+      Cancel
+    </button>
+  </div>
+
+</form>
+
+<!-- Lesson Content Preview -->
+<div class="lesson-preview" *ngIf="lessonForm.get('textContent')?.value">
+  <h3>Lesson Preview:</h3>
+  <div class="preview-content" [innerHTML]="lessonForm.get('textContent')?.value"></div>
+</div>

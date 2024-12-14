@@ -1,0 +1,24 @@
+<h2>{{ isEditMode ? 'Edit User' : 'Create User' }}</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required>
+        <mat-error *ngIf="userForm.get('fullName')?.hasError('required')">Full Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required>
+        <mat-error *ngIf="userForm.get('username')?.hasError('required')">Username is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="userForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="userForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+    <button mat-button (click)="router.navigate(['/users'])">Cancel</button>
+</form>

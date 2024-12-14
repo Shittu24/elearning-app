@@ -1,0 +1,134 @@
+/* Signup Component CSS */
+
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #000;
+    /* Black background for the form */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    /* White text color for the header */
+}
+
+.form-field {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ddd;
+    /* Light gray color for the labels */
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-form-field input {
+    color: #fff;
+    /* White text color for input fields */
+}
+
+mat-form-field label {
+    color: #ddd;
+    /* Ensure the label color contrasts with the background */
+}
+
+mat-form-field .mat-form-field-label {
+    color: #ddd !important;
+    /* Ensure the floating label is visible */
+}
+
+mat-form-field .mat-input-element {
+    background-color: #333;
+    /* Dark gray background for the input fields */
+}
+
+button.full-width {
+    width: 100%;
+    margin-top: 20px;
+    color: #fff;
+    /* Button text color white */
+}
+
+button.mat-raised-button {
+    background-color: #3f51b5;
+    /* Primary button color */
+}
+
+button.mat-raised-button:hover {
+    background-color: #303f9f;
+    /* Darker shade on hover */
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    /* White text for the paragraph */
+}
+
+p a {
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Password visibility icon styling */
+.password-visibility-icon {
+    color: #fff;
+    /* Set the icon color to white */
+}
+
+.password-visibility-icon:hover {
+    cursor: pointer;
+    color: #ccc;
+    /* Light gray on hover */
+}
+
+/* OAuth Login Button Styling */
+.oauth-login {
+    margin-bottom: 20px;
+}
+
+.google-login-btn {
+    background-color: #db4437;
+    color: #fff;
+    font-weight: bold;
+}
+
+.google-login-btn mat-icon {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.google-login-btn:hover {
+    background-color: #c23321;
+    /* Darker shade of Google red on hover */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 20px 0;
+    /* Divider between OAuth login and traditional signup */
+}

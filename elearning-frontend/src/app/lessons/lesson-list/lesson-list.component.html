@@ -1,0 +1,31 @@
+<h2>Lessons</h2>
+
+<!-- Only show the Create Lesson button if the user is an admin -->
+<button *ngIf="isAdmin()" mat-raised-button color="primary" (click)="createLesson()">Create Lesson</button>
+
+<div class="lesson-container">
+    <!-- Loop through lessons and display each as a card -->
+    <div class="lesson-card" *ngFor="let lesson of lessons">
+        <div class="lesson-card-content">
+            <span class="lesson-id">#{{ lesson.id }}</span>
+            <h3 class="lesson-title" [ngClass]="{'completed-lesson': lesson.completed}">
+                {{ lesson.title }}
+            </h3>
+        </div>
+
+        <div class="lesson-actions">
+            <button mat-button color="primary" (click)="viewLesson(lesson.id!)">View</button>
+            <!-- <button *ngIf="!lesson.completed" mat-button color="accent" (click)="markAsComplete(lesson.id!)">
+                Mark as Complete
+            </button> -->
+            <button *ngIf="isAdmin()" mat-button color="accent" (click)="editLesson(lesson.id!)">Edit</button>
+            <button *ngIf="isAdmin()" mat-button color="warn" (click)="deleteLesson(lesson.id!)">Delete</button>
+
+        </div>
+    </div>
+</div>
+
+<!-- If no lessons are available, display a message -->
+<div *ngIf="lessons.length === 0" class="no-lessons-message">
+    <p>No lessons available for this course.</p>
+</div>

@@ -1,0 +1,61 @@
+/* Course Detail Container */
+.course-detail-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Image Styling */
+.course-detail-image {
+    max-width: 300px;
+    /* Restrict the width */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Light shadow for depth */
+    object-fit: cover;
+    /* Ensures the image looks good even if resized */
+}
+
+/* Course Info Section */
+.course-info {
+    flex: 1;
+    /* Allows the content to take up the remaining space */
+}
+
+/* Media Query for Tablets */
+@media (max-width: 768px) {
+    .course-detail-container {
+        flex-direction: column;
+        /* Stack image and content vertically on smaller screens */
+        align-items: center;
+    }
+
+    .course-detail-image {
+        max-width: 100%;
+        /* Full width on smaller screens */
+        margin-bottom: 20px;
+    }
+}
+
+/* Media Query for Smaller Phones */
+@media (max-width: 480px) {
+    .course-detail-container {
+        padding: 10px;
+        /* Less padding for small screens */
+    }
+
+    .course-detail-image {
+        max-width: 90%;
+        /* Allow a bit of margin around the image */
+    }
+
+    .course-info p {
+        font-size: 14px;
+        /* Slightly smaller text for phones */
+    }
+}

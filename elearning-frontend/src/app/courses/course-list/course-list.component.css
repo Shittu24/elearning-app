@@ -1,0 +1,83 @@
+/* Grid container for courses */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Ensure 3 columns */
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Course card styles */
+.course-card {
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for course card */
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Course image styles */
+.course-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Course content section */
+.course-content {
+    padding: 16px;
+}
+
+/* Course title */
+.course-title {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Course description */
+.course-description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Course actions (buttons) */
+.course-actions {
+    display: flex;
+    gap: 10px;
+    padding: 16px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+button[mat-raised-button] {
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+        /* 1 column on small screens */
+    }
+}

@@ -1,0 +1,71 @@
+<div class="signup-container">
+    <h2>Create Your Account</h2>
+
+    <!-- Google OAuth2 Login Button -->
+    <div class="oauth-login">
+        <button mat-raised-button color="accent" class="full-width google-login-btn" (click)="loginWithGoogle()">
+            <mat-icon>login</mat-icon> Login with Google
+        </button>
+    </div>
+
+    <hr />
+
+    <!-- Signup form (Traditional Signup) -->
+    <form [formGroup]="signupForm" (ngSubmit)="register()">
+        <div class="form-field">
+            <label for="firstName">First Name:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput id="firstName" placeholder="Enter your first name" formControlName="firstName" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <label for="lastName">Last Name:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput id="lastName" placeholder="Enter your last name" formControlName="lastName" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <label for="username">Username:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput id="username" placeholder="Choose a username" formControlName="username" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <label for="email">Email:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput id="email" placeholder="Enter your email address" formControlName="email" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput [type]="hidePassword ? 'password' : 'text'" id="password"
+                    placeholder="Create a password" formControlName="password" required>
+                <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <label for="confirmPassword">Confirm Password:</label>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword"
+                    placeholder="Confirm your password" formControlName="confirmPassword" required>
+                <button mat-icon-button matSuffix (click)="toggleConfirmPasswordVisibility()" type="button">
+                    <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-error *ngIf="signupForm.hasError('passwordMismatch')">Passwords do not match</mat-error>
+        </div>
+
+        <button mat-raised-button color="primary" class="full-width" type="submit">Sign Up</button>
+
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p>Already have an account? <a routerLink="/login">Login here</a></p>
+    </form>
+</div>

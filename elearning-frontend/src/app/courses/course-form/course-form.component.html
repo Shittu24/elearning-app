@@ -1,0 +1,22 @@
+<h2>{{ isEditMode ? 'Edit Course' : 'Create Course' }}</h2>
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required>
+        <mat-error *ngIf="courseForm.get('title')?.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+        <mat-error *ngIf="courseForm.get('description')?.hasError('required')">Description is required</mat-error>
+    </mat-form-field>
+
+    <div>
+        <label for="courseImage">Course Image</label>
+        <input type="file" id="courseImage" (change)="onFileSelected($event)">
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+    <button mat-button (click)="router.navigate(['/courses'])">Cancel</button>
+</form>

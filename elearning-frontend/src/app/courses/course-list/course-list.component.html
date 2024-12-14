@@ -1,0 +1,46 @@
+<h2>Courses</h2>
+
+<!-- Display the 'Create Course' button only if the user is an admin -->
+<button *ngIf="isAdmin()" mat-raised-button color="primary" (click)="createCourse()">
+    Create Course
+</button>
+
+<div class="course-grid">
+    <div class="course-card" *ngFor="let course of courses">
+        <!-- Display the course image if available -->
+        <img *ngIf="course.imagePath" [src]="getFullImageUrl(course.imagePath)" alt="{{ course.title }}"
+            class="course-image" />
+
+        <div class="course-content">
+            <h3 class="course-title">{{ course.title }}</h3>
+
+            <!-- Display shortened description with '...' if the text is long -->
+            <p class="course-description">
+                {{ getShortDescription(course.description) }}
+                <span *ngIf="course.description.length > 100">...</span>
+            </p>
+        </div>
+
+        <div class="course-actions">
+            <!-- Enroll Button (Only if the user is not enrolled) -->
+            <button mat-raised-button color="primary" (click)="enrollCourse(course.id)" *ngIf="!course.isEnrolled">
+                Enroll
+            </button>
+
+            <!-- View Button (Only enabled if the user is enrolled) -->
+            <button mat-raised-button color="accent" (click)="viewCourse(course.id)" [disabled]="!course.isEnrolled">
+                View
+            </button>
+
+            <!-- Admin Actions: Edit and Delete -->
+            <div *ngIf="isAdmin()">
+                <button mat-raised-button color="warn" (click)="editCourse(course.id)">
+                    Edit
+                </button>
+                <button mat-raised-button color="warn" (click)="deleteCourse(course.id)">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

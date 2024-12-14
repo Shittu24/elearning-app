@@ -1,0 +1,25 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+main {
+    padding-top: 64px;
+    /* Height of the toolbar */
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    margin-right: 10px;
+}
