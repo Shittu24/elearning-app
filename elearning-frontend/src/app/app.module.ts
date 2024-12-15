@@ -32,6 +32,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
@@ -42,8 +43,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
     LessonsModule,
     EnrollmentsModule,
     UsersModule,
-    AppRoutingModule,
-    FlexLayoutModule,
     LoginModule,
   ],
   providers: [

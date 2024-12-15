@@ -7,6 +7,10 @@ import { CourseService } from '../../courses/course.service';
 import { Lesson } from '../lessons.model';
 import { Course } from '../../courses/course.model';
 
+// Import Quill and Delta
+import QuillType from 'quill';
+import Delta from 'quill';
+
 @Component({
   selector: 'app-lesson-form',
   templateUrl: './lesson-form.component.html',
@@ -19,25 +23,8 @@ export class LessonFormComponent implements OnInit {
   courses: Course[] = [];
   selectedCourseId: number | null = null;
 
-  @ViewChild('quillEditor', { static: false }) quillEditorComponent!: QuillEditorComponent;
-
-  modules = {
-    toolbar: {
-      container: [
-        ['bold', 'italic', 'underline'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image'],
-        [{ align: [] }],
-        [{ font: [] }],
-        [{ size: ['small', false, 'large', 'huge'] }]
-      ],
-      handlers: {
-        image: this.customImageHandler.bind(this)
-      }
-    },
-    theme: 'snow',
-    placeholder: 'Write lesson content here...'
-  };
+  // Reference to the Quill editor
+  @ViewChild('quillEditor') quillEditor!: QuillEditorComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +33,7 @@ export class LessonFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    // Initialize the form
     this.lessonForm = this.fb.group({
       title: ['', Validators.required],
       textContent: ['', Validators.required],
@@ -71,11 +59,34 @@ export class LessonFormComponent implements OnInit {
       });
     }
 
+    // Load all courses for the course selection dropdown
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data;
     });
+
+    // Set Quill editor modules configuration dynamically in ngOnInit
+    if (this.quillEditor) {
+      this.quillEditor.modules = {
+        toolbar: {
+          container: [
+            ['bold', 'italic', 'underline'],  // Text formatting options
+            [{ list: 'ordered' }, { list: 'bullet' }],  // Ordered and bullet lists
+            ['link', 'image'],  // Link and image insert options
+            [{ align: [] }],  // Text alignment
+            [{ font: [] }],
+            [{ size: ['small', false, 'large', 'huge'] }]  // Font size options
+          ],
+          handlers: {
+            image: this.customImageHandler.bind(this)  // Custom image upload handler
+          }
+        },
+        theme: 'snow',
+        placeholder: 'Write lesson content here...',  // Set the placeholder
+      };
+    }
   }
 
+  // Custom image handler for Quill
   customImageHandler(): void {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
@@ -90,12 +101,13 @@ export class LessonFormComponent implements OnInit {
     };
   }
 
+  // Handle image upload for the Quill editor
   uploadImage(file: File): void {
     this.lessonService.uploadFile(file, 'lesson-images').subscribe(
       (response: string) => {
-        const imageUrl = response; // Backend URL for the uploaded image
-        const range = this.quillEditorComponent.quillEditor.getSelection(true);
-        this.quillEditorComponent.quillEditor.insertEmbed(range.index, 'image', imageUrl);
+        const imageUrl = response;  // Get the image URL returned by the backend
+        const range = this.quillEditor.quillEditor.getSelection(true);
+        this.quillEditor.quillEditor.insertEmbed(range.index, 'image', imageUrl);  // Insert the image into the editor
       },
       (error) => {
         console.error('Image upload failed:', error);
