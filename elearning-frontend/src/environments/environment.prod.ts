@@ -1,11 +1,6 @@
 export const environment = {
     production: true,
-    // url: 'http://localhost:9000',
-    // apiUrl: 'http://localhost:9000/api',
-    // google: 'http://localhost:9000/oauth2/authorization/google'
-
-    url: 'http://learn-islam.run.place',
-    apiUrl: 'http://learn-islam.run.place/api',
-    google: 'http://learn-islam.run.place/oauth2/authorization/google'
+    url: 'https://islam-learning.click',
+    apiUrl: 'https://islam-learning.click/api',
+    google: 'https://islam-learning.click/oauth2/authorization/google'
 };
-
