@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../course.service';
 import { Course } from '../course.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-detail',
@@ -51,10 +52,10 @@ export class CourseDetailComponent implements OnInit {
 
   getFullImageUrl(imagePath: string): string {
     if (imagePath.startsWith('/api/files')) {
-      return `http://localhost:9000${imagePath}`;
+      return `${environment.url}${imagePath}`;
     }
 
-    return `http://localhost:9000/api/files/${imagePath.startsWith('/') ? imagePath.substring(1) : imagePath}`;
+    return `${environment.apiUrl}/files/${imagePath.startsWith('/') ? imagePath.substring(1) : imagePath}`;
   }
 
 }
