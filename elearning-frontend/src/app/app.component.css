@@ -82,3 +82,88 @@ mat-radio-group {
     color: white;
     /* Ensure radio group text is visible */
 }
+
+/* Media queries for responsive design */
+
+/* Small devices (phones, less than 600px) */
+@media (max-width: 599px) {
+    mat-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .dropbtn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .dropdown-content {
+        min-width: 100px;
+    }
+
+    main {
+        padding-top: 56px;
+        /* Adjust padding for smaller toolbar on small devices */
+    }
+}
+
+/* Medium devices (tablets, 600px to 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    mat-toolbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 16px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .dropbtn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .dropdown-content {
+        min-width: 120px;
+    }
+
+    main {
+        padding-top: 64px;
+    }
+}
+
+/* Large devices (desktops, more than 1024px) */
+@media (min-width: 1025px) {
+    mat-toolbar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    nav {
+        display: flex;
+        gap: 16px;
+    }
+
+    .dropbtn {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+
+    .dropdown-content {
+        min-width: 150px;
+    }
+
+    main {
+        padding-top: 64px;
+    }
+}
