@@ -1,116 +1,82 @@
+/* Spacer for alignment */
 .spacer {
     flex: 1 1 auto;
 }
 
-/* Dropdown container */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Reduced size of the dropdown button */
-.dropbtn {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    background-color: inherit;
-    color: inherit;
-}
-
-/* Dropdown content styling */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 120px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 8px 12px;
-    font-size: 12px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Hover effect for dropdown links */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: rgba(160, 19, 19, 0.731);
-}
-
-/* Set toolbar to fixed position */
 mat-toolbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Ensure the main content is visible below the fixed toolbar */
-main {
-    padding-top: 64px;
-    /* Adjust this value based on the height of your toolbar */
-}
-
-/* Form field styling for color contrast */
-mat-form-field {
+/* Hamburger Menu Button */
+.menu-btn {
+    display: none;
+    /* Hide by default */
+    margin-left: auto;
+    /* Push to the right */
     color: white;
-    /* Set form field text color */
+    /* Ensure it matches toolbar color */
 }
 
-mat-form-field.mat-focused .mat-form-field-label {
-    color: white !important;
-    /* Ensure form labels are visible when focused */
+/* Navigation styles */
+nav {
+    display: flex;
+    gap: 16px;
+    transition: max-height 0.3s ease-in-out;
 }
 
-/* General style overrides for radio groups */
-mat-radio-group {
+nav a {
+    text-decoration: none;
     color: white;
-    /* Ensure radio group text is visible */
 }
 
-/* Media queries for responsive design */
+/* Responsive styles */
 
 /* Small devices (phones, less than 600px) */
 @media (max-width: 599px) {
     mat-toolbar {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        /* Ensure items are in a row */
+        justify-content: space-between;
+    }
+
+    .menu-btn {
+        display: inline-block;
+        /* Show hamburger menu button on small screens */
     }
 
     nav {
-        display: flex;
+        display: none;
+        /* Hide navigation by default */
         flex-direction: column;
         gap: 8px;
         width: 100%;
+        background-color: #880e4f;
+        /* Same as toolbar color */
+        position: absolute;
+        top: 56px;
+        left: 0;
+        padding: 8px 0;
+        z-index: 1000;
     }
 
-    .dropbtn {
-        font-size: 12px;
-        padding: 6px 10px;
+    nav.open {
+        display: flex;
+        /* Show navigation when the menu is open */
     }
 
-    .dropdown-content {
-        min-width: 100px;
+    nav a {
+        padding: 8px 16px;
     }
 
     main {
         padding-top: 56px;
-        /* Adjust padding for smaller toolbar on small devices */
+        /* Adjust padding for smaller toolbar */
     }
 }
 
@@ -128,15 +94,6 @@ mat-radio-group {
         gap: 12px;
     }
 
-    .dropbtn {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .dropdown-content {
-        min-width: 120px;
-    }
-
     main {
         padding-top: 64px;
     }
@@ -152,15 +109,6 @@ mat-radio-group {
     nav {
         display: flex;
         gap: 16px;
-    }
-
-    .dropbtn {
-        font-size: 16px;
-        padding: 10px 16px;
-    }
-
-    .dropdown-content {
-        min-width: 150px;
     }
 
     main {

@@ -1,26 +1,27 @@
 <mat-toolbar color="primary">
   <span>E-Learning App</span>
   <span class="spacer"></span>
-  <nav>
-    <a mat-button routerLink="/">Home</a>
-    <a mat-button routerLink="/about">About Us</a>
+
+  <!-- Hamburger Menu Button (Visible on Mobile Only) -->
+  <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Navigation Menu -->
+  <nav [class.open]="isMenuOpen">
+    <a mat-button routerLink="/" (click)="closeMenu()">Home</a>
+    <a mat-button routerLink="/about" (click)="closeMenu()">About Us</a>
 
     <ng-container *ngIf="isAuthenticated(); else guestLinks">
-      <a mat-button routerLink="/courses">Courses</a>
-
-      <a *ngIf="isAdmin()" mat-button routerLink="/enrollments">Enrollments</a>
-      <a *ngIf="isAdmin()" mat-button routerLink="/users">Users</a>
-      <a mat-button (click)="logout()">Logout</a>
+      <a mat-button routerLink="/courses" (click)="closeMenu()">Courses</a>
+      <a *ngIf="isAdmin()" mat-button routerLink="/enrollments" (click)="closeMenu()">Enrollments</a>
+      <a *ngIf="isAdmin()" mat-button routerLink="/users" (click)="closeMenu()">Users</a>
+      <a mat-button (click)="logout(); closeMenu()">Logout</a>
     </ng-container>
   </nav>
 
   <ng-template #guestLinks>
-    <a mat-button routerLink="/login">Login</a>
-    <!-- <a mat-button routerLink="/signup">Sign Up</a> -->
-  </ng-template>
-
-  <ng-template #noCourses>
-    <a mat-button>No courses available</a>
+    <a mat-button routerLink="/login" (click)="closeMenu()">Login</a>
   </ng-template>
 </mat-toolbar>
 
